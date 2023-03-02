@@ -34,6 +34,6 @@ public class WordRepository {
                 mWordDao.insert(word);
             }
         }).start();*/
-        mWordDao.insert(word);
+       // mWordDao.insert(word);
     }
 }

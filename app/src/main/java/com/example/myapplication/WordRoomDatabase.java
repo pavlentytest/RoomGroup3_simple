@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Word.class}, version = 1, exportSchema = false)
+@Database(entities = {Word.class}, version = 2, exportSchema = false)
 public abstract class WordRoomDatabase extends RoomDatabase {
     // Это создание таблицы!!!
     public abstract WordDao wordDao();
@@ -27,7 +27,8 @@ public abstract class WordRoomDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     WordRoomDatabase.class, "word_database")
-                        //    .addCallback(sRoomDatabaseCallback)
+                            //.addCallback(sRoomDatabaseCallback)
+                            //.fallbackToDestructiveMigration() <- drop!
                             .build();
                 }
             }
